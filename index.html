@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1a0b24">
+<title>5 meses · Genesis & Mauricio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,500&family=Quicksand:wght@400;500;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg1:#14081f; --bg2:#2a0f3a; --bg3:#5a1f4f; --bg4:#a8365f;
+  --rosa:#ff5c8a; --rosa-claro:#ffc2d6; --oro:#ffd98a; --crema:#fff4ec;
+  --suave:rgba(255,244,236,.74);
+  --vidrio:rgba(255,255,255,.07); --borde:rgba(255,194,214,.28);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100dvh;color:var(--crema);
+  font-family:'Quicksand',system-ui,-apple-system,'Segoe UI',sans-serif;
+  background:linear-gradient(180deg,var(--bg1) 0%,var(--bg2) 35%,var(--bg3) 75%,var(--bg4) 100%);
+  background-attachment:fixed;overflow-x:hidden;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+#estrellas,#flotantes{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.estrella{position:absolute;border-radius:50%;background:#fff;animation:titilar ease-in-out infinite}
+@keyframes titilar{0%,100%{opacity:.12;transform:scale(.8)}50%{opacity:.95;transform:scale(1.25)}}
+.corazon-flota{position:absolute;bottom:-40px;animation:subir linear forwards;opacity:0;will-change:transform}
+@keyframes subir{
+  0%{opacity:0;transform:translateY(0) translateX(0) scale(.6)}
+  10%{opacity:.85}
+  100%{opacity:0;transform:translateY(-110vh) translateX(var(--dx)) scale(1.1)}
+}
+main{position:relative;z-index:2}
+section{
+  min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:64px clamp(18px,5vw,48px);text-align:center;
+}
+.titulo-sec{
+  font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-style:italic;
+  font-size:clamp(1.9rem,6vw,3.2rem);line-height:1.15;margin:0 0 10px;color:var(--rosa-claro);
+}
+.sub-sec{color:var(--suave);font-size:clamp(.9rem,2.6vw,1.05rem);line-height:1.6;margin:0 0 28px;max-width:560px}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.on{opacity:1;transform:none}
+
+/* ---------- HERO ---------- */
+#hero{position:relative}
+.mini{letter-spacing:.42em;text-transform:uppercase;font-size:.72rem;color:var(--suave);margin:0 0 16px}
+h1{
+  font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;
+  font-size:clamp(3.4rem,15vw,8rem);line-height:.95;margin:0;
+  background:linear-gradient(180deg,#fff4ec 0%,var(--rosa-claro) 55%,var(--rosa) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 0 60px rgba(255,92,138,.25);
+}
+h1 small{display:block;font-family:'Dancing Script',cursive;font-size:.34em;color:var(--oro);-webkit-text-fill-color:var(--oro);margin:10px 0}
+.nombre-completo{font-family:'Dancing Script',cursive;font-size:clamp(1.3rem,5.2vw,2.1rem);color:var(--oro);margin:18px 0 0;line-height:1.3}
+.nombres{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.3rem,4.5vw,2rem);margin:20px 0 28px;color:var(--crema)}
+.nombres span{color:var(--rosa)}
+.reloj{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,2vw,16px);width:min(460px,100%);margin:0 auto 12px}
+.reloj div{background:var(--vidrio);border:1px solid var(--borde);border-radius:18px;padding:14px 4px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.reloj b{display:block;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(1.6rem,7vw,2.6rem);color:var(--oro);line-height:1}
+.reloj span{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--suave)}
+.leyenda{font-size:.85rem;color:var(--suave);margin:0 0 30px}
+.flecha{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--suave);animation:rebote 2.2s ease-in-out infinite}
+@keyframes rebote{0%,100%{transform:translate(-50%,0);opacity:.5}50%{transform:translate(-50%,8px);opacity:1}}
+
+/* ---------- BOTONES / INPUTS ---------- */
+.btn{
+  font-family:inherit;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;
+  padding:14px 28px;border:none;border-radius:999px;cursor:pointer;color:#3a0f22;
+  background:linear-gradient(180deg,#ffe3ec,var(--rosa));
+  box-shadow:0 10px 30px rgba(255,92,138,.35);transition:transform .2s ease,box-shadow .2s ease;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:scale(.96)}
+.btn.suave{background:var(--vidrio);color:var(--crema);border:1px solid var(--borde);box-shadow:none}
+.campo{
+  display:flex;gap:10px;width:min(560px,100%);flex-wrap:wrap;justify-content:center;
+}
+.campo input{
+  flex:1 1 220px;min-width:0;font-family:inherit;font-size:1rem;color:var(--crema);
+  background:var(--vidrio);border:1px solid var(--borde);border-radius:999px;padding:14px 22px;outline:none;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:border-color .2s,box-shadow .2s;
+}
+.campo input::placeholder{color:rgba(255,244,236,.45)}
+.campo input:focus{border-color:var(--rosa);box-shadow:0 0 0 4px rgba(255,92,138,.18)}
+.respuesta{
+  margin-top:26px;width:min(560px,100%);min-height:96px;padding:22px 24px;border-radius:24px;
+  background:var(--vidrio);border:1px solid var(--borde);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.15rem,4vw,1.55rem);line-height:1.45;
+  display:flex;align-items:center;justify-content:center;
+}
+.respuesta.nueva{animation:entra .8s ease}
+@keyframes entra{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+
+/* ---------- CORAZON ---------- */
+.corazon-wrap{position:relative;width:min(560px,94vw);aspect-ratio:1/.92;margin:0 auto}
+#cv{position:absolute;inset:0;width:100%;height:100%;touch-action:manipulation;cursor:pointer}
+.corazon-txt{
+  position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);pointer-events:none;text-align:center;width:70%;
+  font-family:'Dancing Script',cursive;font-size:clamp(1.5rem,7vw,2.8rem);color:#fff;line-height:1.1;
+  text-shadow:0 2px 18px rgba(120,10,50,.8),0 0 30px rgba(255,92,138,.7);
+}
+.corazon-txt i{display:block;font-style:normal;font-size:.55em;color:var(--oro);margin:6px 0}
+.latidos{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--suave);margin-top:6px}
+.latidos b{color:var(--rosa-claro)}
+.mensaje-corazon{min-height:4.8em;margin-top:14px;max-width:520px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.15rem,4vw,1.6rem);line-height:1.4;color:var(--crema)}
+
+/* ---------- CHIPS ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:600px}
+.chip{
+  font-family:inherit;font-size:.95rem;color:var(--crema);background:var(--vidrio);border:1px solid var(--borde);
+  padding:12px 20px;border-radius:999px;cursor:pointer;transition:all .2s ease;
+}
+.chip:hover{background:rgba(255,92,138,.22)}
+.chip.sel{background:linear-gradient(180deg,#ffd0df,var(--rosa));color:#3a0f22;border-color:transparent;transform:scale(1.05)}
+
+/* ---------- CARTAS DE MESES ---------- */
+.meses{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;width:min(1100px,100%)}
+.mes{perspective:1000px;height:300px;flex:0 1 300px;cursor:pointer}
+.mes-in{position:relative;width:100%;height:100%;transition:transform .8s cubic-bezier(.3,1.2,.4,1);transform-style:preserve-3d}
+.mes.volteada .mes-in{transform:rotateY(180deg)}
+.cara{
+  position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:24px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;
+  border:1px solid var(--borde);background:var(--vidrio);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+}
+.cara.frente b{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;color:var(--oro);line-height:1}
+.cara.frente span{letter-spacing:.3em;text-transform:uppercase;font-size:.7rem;color:var(--suave);margin-top:8px}
+.cara.frente em{font-style:normal;font-size:1.4rem;margin-top:12px}
+.cara.dorso{transform:rotateY(180deg);background:linear-gradient(160deg,rgba(255,92,138,.3),rgba(90,31,79,.55));
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.02rem;line-height:1.4;text-align:center}
+.mes:last-child .cara.frente{border-color:var(--oro);box-shadow:0 0 40px rgba(255,217,138,.22)}
+
+/* ---------- RAZONES ---------- */
+.razon-num{font-family:'Dancing Script',cursive;color:var(--oro);font-size:1.6rem;margin-bottom:8px}
+
+/* ---------- DESEO QUE SUBE ---------- */
+.cielo{position:relative;width:min(640px,100%);height:400px;margin-top:10px;pointer-events:none}
+.poema-vuelo{
+  position:absolute;left:50%;bottom:0;width:min(560px,100%);text-align:center;padding:22px 24px;border-radius:26px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,217,138,.4);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:0 0 40px rgba(255,217,138,.15);
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.02rem,3.8vw,1.3rem);line-height:1.5;
+  transform:translateX(-50%);will-change:transform,opacity;
+  animation:volar 18s linear forwards;
+}
+.poema-vuelo p,.poema p{margin:0 0 14px}
+.poema-vuelo p:last-child,.poema p:last-child{margin-bottom:0}
+@keyframes volar{
+  0%{opacity:0;transform:translate(-50%,30px) scale(.95)}
+  6%{opacity:1;transform:translate(-50%,0) scale(1)}
+  45%{opacity:1}
+  100%{opacity:0;transform:translate(-50%,-240px) scale(1.03)}
+}
+.respuesta .poema{font-size:clamp(1rem,3.6vw,1.25rem);line-height:1.5}
+.versiculo{margin-top:16px;padding-top:14px;border-top:1px solid var(--borde);font-family:'Quicksand',sans-serif;font-style:normal;font-size:.82rem;line-height:1.5;color:var(--oro)}
+.versiculo b{display:block;margin-top:4px;font-weight:600;letter-spacing:.06em}
+.verso{display:block;margin-top:12px;font-family:'Quicksand',sans-serif;font-style:normal;font-size:.74rem;line-height:1.45;color:var(--oro)}
+.verso b{display:block;margin-top:4px;font-weight:600}
+
+/* ---------- CARTA ---------- */
+.carta{
+  width:min(640px,100%);text-align:left;padding:clamp(24px,5vw,44px);border-radius:28px;min-height:320px;
+  background:linear-gradient(160deg,rgba(255,244,236,.96),rgba(255,214,226,.94));color:#4a1d33;
+  box-shadow:0 30px 80px rgba(0,0,0,.45);font-family:'Cormorant Garamond',serif;font-size:clamp(1.12rem,3.6vw,1.4rem);line-height:1.6;
+  white-space:pre-wrap;
+}
+.carta .firma{font-family:'Dancing Script',cursive;font-size:1.7em;color:#b0224f;display:block;margin-top:14px}
+.oculto{display:none!important}
+footer{position:relative;z-index:2;text-align:center;padding:30px 20px 50px;color:var(--suave);font-size:.85rem}
+footer b{color:var(--rosa-claro)}
+@media (max-width:480px){section{padding:56px 16px}.mes{height:300px}}
+@media (prefers-reduced-motion:reduce){.poema-vuelo{animation:none!important;opacity:1}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div id="estrellas" aria-hidden="true"></div>
+<div id="flotantes" aria-hidden="true"></div>
+
+<main>
+  <!-- HERO -->
+  <section id="hero">
+    <p class="mini reveal">Para ti, mi amor</p>
+    <h1 class="reveal"><span id="gNombre">Genesis</span><small>cumplimos</small>5 meses</h1>
+    <p class="nombre-completo reveal">Genesis Brigitte Lainez Tomala</p>
+    <p class="nombres reveal"><span id="n1">Genesis</span> <span>♥</span> <span id="n2">Mauricio</span></p>
+    <div class="reloj reveal" id="reloj">
+      <div><b id="rd">0</b><span>días</span></div>
+      <div><b id="rh">0</b><span>horas</span></div>
+      <div><b id="rm">0</b><span>min</span></div>
+      <div><b id="rs">0</b><span>seg</span></div>
+    </div>
+    <p class="leyenda reveal">20 de noviembre · de tu mano, y contando.</p>
+    <button class="btn reveal" id="empezar">Entrar a nuestro jardín</button>
+    <div class="flecha">desliza</div>
+  </section>
+
+  <!-- CORAZON -->
+  <section id="s-corazon">
+    <h2 class="titulo-sec reveal">Toca nuestro corazón</h2>
+    <p class="sub-sec reveal">Está hecho de mil lucecitas que laten por ti. Tócalo, arrástralo, hazlo explotar de amor.</p>
+    <div class="corazon-wrap reveal">
+      <canvas id="cv"></canvas>
+      <div class="corazon-txt">Genesis<i>&amp;</i>Mauricio</div>
+    </div>
+    <p class="latidos reveal">latidos dados: <b id="latidos">0</b></p>
+    <p class="mensaje-corazon" id="msgCorazon">Toca el corazón…</p>
+  </section>
+
+  <!-- ANIMO -->
+  <section id="s-animo">
+    <h2 class="titulo-sec reveal">¿Cómo te sientes hoy, mi amor?</h2>
+    <p class="sub-sec reveal">Elige lo que sientes y te respondo con un abrazo en forma de palabras.</p>
+    <div class="chips reveal" id="chips"></div>
+    <div class="respuesta" id="respAnimo">Cuéntame cómo estás, yo te escucho siempre. 🤍</div>
+  </section>
+
+  <!-- PALABRA -->
+  <section id="s-palabra">
+    <h2 class="titulo-sec reveal">Dime una palabra</h2>
+    <p class="sub-sec reveal">Escribe una palabra que te haga pensar en nosotros (por ejemplo: <i>abrazo, café, risa, hogar</i>) y mira qué poema nace, con un versículo para ti.</p>
+    <div class="campo reveal" id="formPalabra">
+      <input id="inPalabra" type="text" maxlength="24" placeholder="Escribe una palabra…" aria-label="Una palabra">
+      <button class="btn" type="button" id="btnPalabra">Descubrir</button>
+    </div>
+    <div class="respuesta" id="respPalabra">Aquí aparecerá tu poema ✨</div>
+  </section>
+
+  <!-- MESES -->
+  <section id="s-meses">
+    <h2 class="titulo-sec reveal">Nuestros cinco meses</h2>
+    <p class="sub-sec reveal">Toca cada tarjeta para descubrir qué guardé en ella.</p>
+    <div class="meses" id="meses"></div>
+  </section>
+
+  <!-- RAZONES -->
+  <section id="s-razones">
+    <h2 class="titulo-sec reveal">Razones para quererte</h2>
+    <p class="sub-sec reveal">No alcanzan mil, pero empecemos por estas.</p>
+    <div class="respuesta" id="respRazon"><div><div class="razon-num">Razón #1</div>Porque contigo hasta lo simple se siente especial.</div></div>
+    <p></p>
+    <button class="btn" id="otraRazon">Otra razón</button>
+  </section>
+
+  <!-- DESEOS -->
+  <section id="s-deseos">
+    <h2 class="titulo-sec reveal">Pide un deseo</h2>
+    <p class="sub-sec reveal">Escribe algo que sueñes para nosotros y mira cómo tu deseo se vuelve poema y sube hasta el cielo.</p>
+    <div class="campo reveal" id="formDeseo">
+      <input id="inDeseo" type="text" maxlength="70" placeholder="Quiero que algún día…" aria-label="Tu deseo">
+      <button class="btn" type="button" id="btnDeseo">Lanzar al cielo</button>
+    </div>
+    <div class="cielo" id="cielo"></div>
+  </section>
+
+  <!-- CARTA -->
+  <section id="s-carta">
+    <h2 class="titulo-sec reveal">Una carta para ti</h2>
+    <p class="sub-sec reveal" id="subCarta">La escribí pensando en ti.</p>
+    <button class="btn" id="abrirCarta">Abrir carta</button>
+    <div class="carta oculto" id="carta"></div>
+  </section>
+</main>
+
+<footer>Hecho con todo el cariño del mundo por <b id="fMauricio">Mauricio</b>, para <b id="fGenesis">Genesis</b> · 20·11·2026 💗</footer>
+
+<script>
+(function(){
+/* =========================================================
+   PERSONALIZA AQUÍ
+   ========================================================= */
+const CONFIG = {
+  ella: "Genesis",
+  el: "Mauricio",
+  inicio: new Date(2026, 6, 20, 0, 0, 0), // 20 de julio de 2026: el día en que comenzaron
+  carta:
+`Mi amor, Genesis:
+
+Hoy cumplimos cinco meses y, mientras escribo esto, me tiembla el corazón de lo mucho que significas para mí.
+
+No sé en qué momento pasó, pero un día me di cuenta de que ya no imaginaba mis días sin ti. Llegaste sin hacer ruido y me cambiaste la vida entera.
+
+Gracias por tu paciencia cuando fallo, por tus abrazos que me arreglan el alma, por tu risa que me devuelve la paz. Gracias por quedarte, por elegirme y por quererme tal como soy.
+
+Hay un versículo que siento escrito para nosotros:
+«Todo lo sufre, todo lo cree, todo lo espera, todo lo soporta. El amor nunca deja de ser.»
+— 1 Corintios 13:7-8
+
+A veces me quedo en silencio pensando en lo afortunado que soy de que existas, de que la vida nos haya cruzado y de que justo tú, entre tantas personas, seas quien me hace sentir en casa.
+
+Te prometo cuidarte, respetarte y apoyarte en cada sueño que tengas. Prometo estar en tus días buenos para celebrarlos contigo, y en los malos para abrazarte hasta que pasen. Nunca vas a estar sola, porque me tienes a mí.
+
+Cinco meses son apenas el comienzo. Quiero mil recuerdos más contigo, mil abrazos, mil risas y toda una vida de "te amo" dichos con el corazón en la mano.
+
+Y le pido a Dios, con el alma entera:
+«Jehová te bendiga, y te guarde; Jehová haga resplandecer su rostro sobre ti, y tenga de ti misericordia; Jehová alce sobre ti su rostro, y ponga en ti paz.»
+— Números 6:24-26
+
+Eres lo más bonito que me ha pasado, Genesis. Hoy, mañana y siempre.
+
+Te amo con toda mi alma.`
+};
+
+const $ = id => document.getElementById(id);
+const rnd = (a,b)=>a+Math.random()*(b-a);
+const pick = a => a[Math.random()*a.length|0];
+
+/* nombres */
+["gNombre","n1","fGenesis"].forEach(i=>$(i).textContent=CONFIG.ella);
+["n2","fMauricio"].forEach(i=>$(i).textContent=CONFIG.el);
+document.querySelector('.corazon-txt').innerHTML = CONFIG.ella+'<i>&amp;</i>'+CONFIG.el;
+$('subCarta').textContent = 'Escrita por '+CONFIG.el+', pensando en ti, '+CONFIG.ella+'.';
+
+/* estrellas */
+(function(){
+  const c=$('estrellas'),n=innerWidth<600?70:130;let h='';
+  for(let i=0;i<n;i++){const s=rnd(1,2.6).toFixed(1);
+    h+=`<span class="estrella" style="left:${rnd(0,100).toFixed(1)}%;top:${rnd(0,100).toFixed(1)}%;width:${s}px;height:${s}px;animation-duration:${rnd(2,6).toFixed(1)}s;animation-delay:${rnd(0,5).toFixed(1)}s"></span>`;}
+  c.innerHTML=h;
+})();
+
+/* corazones flotantes */
+const flot=$('flotantes'),emojis=['💗','💖','💕','🌹','✨','💛'];
+function corazonFlota(x,tam,dur){
+  const s=document.createElement('span');s.className='corazon-flota';
+  s.textContent=pick(emojis);
+  s.style.cssText=`left:${x}px;font-size:${tam}px;animation-duration:${dur}s;--dx:${rnd(-70,70)}px`;
+  flot.appendChild(s);setTimeout(()=>s.remove(),dur*1000+200);
+}
+setInterval(()=>{if(!document.hidden)corazonFlota(rnd(0,innerWidth),rnd(14,28),rnd(9,16))},1100);
+
+/* explosion de corazoncitos al tocar */
+function explosion(x,y,n=7){
+  for(let i=0;i<n;i++){
+    const s=document.createElement('span');s.textContent=pick(emojis);
+    s.style.cssText=`position:fixed;left:${x}px;top:${y}px;font-size:${rnd(14,26)}px;pointer-events:none;z-index:50;will-change:transform`;
+    document.body.appendChild(s);
+    const a=rnd(0,Math.PI*2),d=rnd(50,130);
+    s.animate([{transform:'translate(-50%,-50%) scale(.4)',opacity:1},
+      {transform:`translate(calc(-50% + ${Math.cos(a)*d}px),calc(-50% + ${Math.sin(a)*d-40}px)) scale(1.1)`,opacity:0}],
+      {duration:rnd(900,1500),easing:'cubic-bezier(.2,.8,.3,1)'}).onfinish=()=>s.remove();
+  }
+}
+document.addEventListener('pointerdown',e=>{
+  if(e.target.closest('input,#cv'))return;
+  explosion(e.clientX,e.clientY,5);
+});
+
+/* boton + tecla Enter (sin <form>, para que funcione en cualquier vista previa) */
+function ligar(inId,btnId,fn){
+  $(btnId).addEventListener('click',fn);
+  $(inId).addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();fn();}});
+}
+
+/* revelar al hacer scroll */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(el.closest('#hero')?i*0.18:0)+'s';io.observe(el)});
+
+$('empezar').addEventListener('click',()=>$('s-corazon').scrollIntoView({behavior:'smooth'}));
+
+/* ---------- reloj ---------- */
+function tick(){
+  let ms=Math.max(0,Date.now()-CONFIG.inicio.getTime());
+  const d=Math.floor(ms/864e5);ms-=d*864e5;
+  const h=Math.floor(ms/36e5);ms-=h*36e5;
+  const m=Math.floor(ms/6e4);ms-=m*6e4;
+  const s=Math.floor(ms/1e3);
+  $('rd').textContent=d;$('rh').textContent=String(h).padStart(2,'0');
+  $('rm').textContent=String(m).padStart(2,'0');$('rs').textContent=String(s).padStart(2,'0');
+}
+tick();setInterval(tick,1000);
+
+/* ---------- corazon de particulas ---------- */
+const cv=$('cv'),ctx=cv.getContext('2d');
+let W,H,dpr,ps=[],ptr={x:-999,y:-999,on:false},latidos=0;
+const mensajesCorazon=[
+  "Cada latido tiene tu nombre.",
+  "Eres mi lugar favorito en el mundo.",
+  "Contigo aprendí que la calma también es amor.",
+  "Mi corazón te eligió y no se arrepiente.",
+  "Gracias por existir en mi vida.",
+  "Eres mi casualidad más bonita.",
+  "Juntos somos mejor.",
+  "Mi lugar seguro tiene tu sonrisa.",
+  "Eres mi hoy y todos mis mañanas.",
+  "Te quiero de aquí a la luna, y de regreso.",
+  "Tu abrazo es el único lugar donde el mundo se detiene.",
+  "Contigo hasta los días grises tienen color.",
+  "Eres lo mejor que me pasó sin buscarlo.",
+  "Me enamoré de tu forma de ser, y sigo enamorándome.",
+  "Si volviera a nacer, te buscaría otra vez.",
+  "Tu risa es mi canción favorita.",
+  "Gracias por quedarte, incluso cuando no soy fácil.",
+  "Contigo aprendí que el amor también es paz.",
+  "Eres mi pensamiento favorito al despertar.",
+  "Mi corazón late diferente cuando estás cerca.",
+  "No necesito un cuento de hadas, te tengo a ti.",
+  "Eres el sí que siempre esperé.",
+  "Ojalá la vida me deje cuidarte siempre.",
+  "Qué suerte la mía de ser tu persona.",
+  "Tus ojos son mi lugar favorito para perderme.",
+  "Contigo todo es más bonito, hasta lo simple.",
+  "Gracias por hacerme sentir en casa.",
+  "Eres mi razón para sonreír sin motivo.",
+  "Contigo el tiempo vuela, pero el amor se queda.",
+  "Cada día a tu lado es un regalo.",
+  "Te quiero en los días buenos y más en los difíciles.",
+  "Eres mi paz después de la tormenta.",
+  "Me haces querer ser mejor cada día.",
+  "Si el amor tuviera un rostro, tendría el tuyo.",
+  "Tu mano en la mía lo cambia todo.",
+  "Eres mi mejor decisión.",
+  "Mi lugar favorito es donde estés tú.",
+  "Contigo aprendí a esperar lo bonito.",
+  "No hay distancia que me haga quererte menos.",
+  "Eres la historia que siempre quise vivir.",
+  "Gracias por cada risa, cada abrazo y cada momento.",
+  "Hay cosas que solo tú entiendes de mí.",
+  "Contigo me siento valiente.",
+  "Tu nombre es mi palabra favorita.",
+  "Eres mi sueño hecho realidad.",
+  "Te elegiría mil veces, en mil vidas.",
+  "Me encanta cómo me miras, como si fuera lo mejor del mundo.",
+  "Contigo aprendí que el amor sí existe.",
+  "Eres el pedacito de cielo que me tocó en la tierra.",
+  "Que nunca se apague lo que sentimos.",
+  "Mi corazón ya sabe el camino hacia ti.",
+  "Eres mi abrazo más sincero.",
+  "Gracias por ser mi calma y mi alegría.",
+  "Quiero ser tu lugar seguro, hoy y siempre.",
+  "Contigo hasta esperar es bonito.",
+  "Eres mi razón favorita para creer en el amor.",
+  "Tu felicidad es mi felicidad.",
+  "Cada mensaje tuyo me ilumina el día.",
+  "Eres lo más bonito que me pasó este año.",
+  "Me gustas por completo, con todo y tus defectos.",
+  "Contigo quiero todos los mañanas.",
+  "Eres mi mejor casualidad y mi mejor decisión.",
+  "Mi amor por ti crece con cada día.",
+  "Gracias por hacerme tan feliz.",
+  "Con tu cariño el mundo se ve más lindo.",
+  "Eres mi persona favorita en todo el universo.",
+  "A tu lado todo tiene sentido.",
+  "Quiero envejecer contigo y seguir diciéndote te quiero.",
+  "Tus besos son mi medicina favorita.",
+  "Eres el verso más bonito de mi historia.",
+  "Si me pierdo, que sea en tus brazos.",
+  "Contigo soy la mejor versión de mí.",
+  "Te llevo conmigo aunque no estés cerca.",
+  "Tu cariño es el mejor regalo que me han dado.",
+  "Eres mi hogar sin paredes.",
+  "Qué bonito es quererte y que me quieras.",
+  "Mi mejor plan siempre es contigo.",
+  "Gracias por enseñarme a amar de verdad.",
+  "Cada vez que pienso en ti, sonrío.",
+  "Eres mi calma, mi risa y mi todo.",
+  "Contigo el amor se siente fácil.",
+  "Quiero cuidarte hoy, mañana y siempre.",
+  "Eres mi favorita en todos los idiomas.",
+  "No sé cómo viví sin ti.",
+  "Tu sonrisa me hace el día.",
+  "Te quiero más de lo que las palabras alcanzan.",
+  "Eres la razón por la que creo en el para siempre.",
+  "Juntos hasta cuando el camino se complique.",
+  "Mi corazón es tuyo, cuídalo como yo cuido el tuyo.",
+  "Gracias por ser tan tú, me encantas.",
+  "Eres mi sol en los días nublados.",
+  "Quiero mil recuerdos más a tu lado.",
+  "Con tu amor me siento invencible.",
+  "Cada detalle tuyo es mi favorito.",
+  "Eres mi sueño más bonito, y estoy despierto.",
+  "Si el amor se pudiera ver, serían tus ojos.",
+  "Hoy te quiero más que ayer.",
+  "Qué hermoso es despertar sabiendo que existes.",
+  "Feliz cinco meses, mi vida. Eres mi regalo.",
+  "Te amo, Genesis. Hoy y todos los días."
+];
+let mazo=[],ultimoMsg=-1;
+function siguienteMensaje(){
+  if(!mazo.length){
+    mazo=mensajesCorazon.map((_,i)=>i);
+    for(let i=mazo.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[mazo[i],mazo[j]]=[mazo[j],mazo[i]];}
+    if(mazo[mazo.length-1]===ultimoMsg){[mazo[0],mazo[mazo.length-1]]=[mazo[mazo.length-1],mazo[0]];}
+  }
+  ultimoMsg=mazo.pop();
+  return mensajesCorazon[ultimoMsg];
+}
+function heartPt(t){return [16*Math.pow(Math.sin(t),3),13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t)]}
+function build(){
+  const r=cv.getBoundingClientRect();dpr=Math.min(devicePixelRatio||1,2);
+  W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+  const sc=Math.min(W,H*1.05)/36,N=W<420?450:750;ps=[];
+  for(let i=0;i<N;i++){
+    const t=rnd(0,Math.PI*2),k=i<N*.55?1+rnd(-.03,.03):Math.sqrt(rnd(.04,.92));
+    const [hx,hy]=heartPt(t);
+    ps.push({x:rnd(0,W),y:rnd(0,H),vx:0,vy:0,
+      tx:W/2+hx*k*sc,ty:H*.47-hy*k*sc+H*.02,
+      r:rnd(1.2,2.8),h:rnd(335,356),l:rnd(58,80),ph:rnd(0,6.28)});
+  }
+}
+function burst(){
+  ps.forEach(p=>{const a=rnd(0,6.28),f=rnd(4,12);p.vx+=Math.cos(a)*f;p.vy+=Math.sin(a)*f});
+  latidos++;$('latidos').textContent=latidos;
+  const m=$('msgCorazon');m.textContent=siguienteMensaje();m.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:600});
+  const r=cv.getBoundingClientRect();explosion(r.left+r.width/2,r.top+r.height*.45,9);
+}
+function loop(t){
+  ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation='lighter';
+  const beat=1+Math.max(0,Math.sin(t/1000*2.6))*.045*Math.max(0,Math.sin(t/1000*2.6+.6));
+  for(const p of ps){
+    const tx=W/2+(p.tx-W/2)*beat,ty=H*.47+(p.ty-H*.47)*beat;
+    p.vx+=(tx-p.x)*.045;p.vy+=(ty-p.y)*.045;
+    if(ptr.on){const dx=p.x-ptr.x,dy=p.y-ptr.y,d2=dx*dx+dy*dy,R=70;
+      if(d2<R*R){const d=Math.sqrt(d2)||1,f=(1-d/R)*3.2;p.vx+=dx/d*f;p.vy+=dy/d*f}}
+    p.vx*=.86;p.vy*=.86;p.x+=p.vx;p.y+=p.vy;
+    ctx.fillStyle=`hsla(${p.h},85%,${p.l}%,${.55+.35*Math.sin(t/600+p.ph)})`;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.283);ctx.fill();
+  }
+  ctx.globalCompositeOperation='source-over';
+  requestAnimationFrame(loop);
+}
+function setPtr(e){const r=cv.getBoundingClientRect();ptr.x=e.clientX-r.left;ptr.y=e.clientY-r.top;ptr.on=true}
+cv.addEventListener('pointermove',setPtr);
+cv.addEventListener('pointerleave',()=>ptr.on=false);
+cv.addEventListener('pointerdown',e=>{setPtr(e);burst()});
+cv.addEventListener('pointerup',()=>{if(e=>0)ptr.on=false});
+addEventListener('resize',build);
+build();requestAnimationFrame(loop);
+
+/* ---------- animo ---------- */
+const animos={
+  "Feliz 😊":["Que tu alegría sea siempre así de grande. Verte feliz es mi plan favorito.","Cuando tú sonríes, el mundo se ve mejor. Disfrútalo, te lo mereces."],
+  "Enamorada 💗":["Entonces estamos igual, porque yo llevo el corazón lleno de ti.","Qué lindo que sea contigo. Cada día me enamoro un poquito más."],
+  "Cansada 😴":["Descansa, mi vida. No tienes que poder con todo hoy. Aquí estoy para abrazarte aunque sea con palabras.","Respira hondo. Lo estás haciendo mejor de lo que crees."],
+  "Triste 🥺":["Ven, te abrazo fuerte. Los días grises pasan, y yo me quedo contigo en todos.","Está bien no estar bien. No estás sola, nunca."],
+  "Estresada 😵‍💫":["Una cosa a la vez, mi amor. Tú eres más fuerte que cualquier día difícil.","Respira. Todo lo que hoy pesa, mañana será un recuerdo. Confío en ti."],
+  "Con ganas de todo ✨":["¡Así me gusta! Ve por todo lo que sueñas, que yo te aplaudo desde la primera fila.","Tu energía es contagiosa. El mundo tiene suerte de tenerte."],
+  "Extrañándote 🌙":["Yo también te extraño. Pero cada día que pasa es uno menos para volver a vernos.","La distancia es un ratito. Lo nuestro es largo."]
+};
+const chips=$('chips');
+Object.keys(animos).forEach(k=>{
+  const b=document.createElement('button');b.className='chip';b.textContent=k;
+  b.onclick=()=>{
+    chips.querySelectorAll('.chip').forEach(c=>c.classList.remove('sel'));b.classList.add('sel');
+    const r=$('respAnimo');r.textContent=pick(animos[k]);r.classList.remove('nueva');void r.offsetWidth;r.classList.add('nueva');
+    const q=b.getBoundingClientRect();explosion(q.left+q.width/2,q.top,8);
+  };chips.appendChild(b);
+});
+
+/* ---------- utilidades de poema ---------- */
+const norm=t=>t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+const esc=t=>t.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function limpia(t){t=t.trim().replace(/^[¡¿]+/,'').replace(/[.!?,;:…]+$/,'');return t.charAt(0).toLowerCase()+t.slice(1);}
+function poemaHTML(txt){return txt.split('\n\n').map(e=>'<p>'+e.split('\n').join('<br>')+'</p>').join('');}
+const ultimoElegido={};
+function elegir(lista,clave){
+  if(lista.length<2)return lista[0];
+  let x;do{x=pick(lista)}while(x===ultimoElegido[clave]);
+  ultimoElegido[clave]=x;return x;
+}
+
+/* ---------- palabra ---------- */
+const VERSOS_AMOR=[
+  ["Todo lo sufre, todo lo cree, todo lo espera, todo lo soporta. El amor nunca deja de ser.","1 Corintios 13:7-8"],
+  ["Las muchas aguas no podrán apagar el amor, ni lo ahogarán los ríos.","Cantares 8:7"],
+  ["Mejores son dos que uno; porque tienen mejor paga de su trabajo.","Eclesiastés 4:9"],
+  ["Y sobre todas estas cosas vestíos de amor, que es el vínculo perfecto.","Colosenses 3:14"],
+  ["Amados, amémonos unos a otros; porque el amor es de Dios.","1 Juan 4:7"],
+  ["Así sirvió Jacob por Raquel siete años; y le parecieron como pocos días, porque la amaba.","Génesis 29:20"],
+  ["Ponme como un sello sobre tu corazón, como una marca sobre tu brazo; porque fuerte como la muerte es el amor.","Cantares 8:6"],
+  ["Jehová te bendiga, y te guarde.","Números 6:24"],
+  ["Cordón de tres dobleces no se rompe pronto.","Eclesiastés 4:12"]
+];
+const GEN_PALABRA=[
+`Si me nombran «{w}», te pienso a mi lado,
+y siento tu abrazo, tan dulce y callado;
+la noche me habla de lo que has sembrado:
+un amor tan hermoso, tan limpio, tan sagrado.
+
+Si el cielo tuviera la voz de mi pecho,
+diría tu nombre, mi amor, satisfecho;
+y cada lucero, con su luz de cristal,
+sería testigo de un amor tan real.`,
+`Contigo entendí que «{w}» es poesía,
+que un simple detalle se vuelve canción;
+tú eres mi musa, mi luz, mi armonía,
+y escribo tu nombre en cada emoción.
+
+Que Dios nos conceda un camino hermoso,
+de risas, de mimos, de calma y de fe;
+y que cada instante, tan dulce y precioso,
+me encuentre a tu lado, y tu mano esté.`,
+`«{w}»... qué palabra tan simple y tan bella,
+que en tu boca se vuelve un perfume de ilusión;
+yo la guardo en mi pecho como una estrella,
+y le rezo a Dios con todo el corazón.
+
+Que nunca se apague tu luz en mi vida,
+que nunca me falte tu forma de amar;
+tú eres mi casa, mi paz, mi guarida,
+y a tu lado quiero para siempre estar.`
+];
+const POEMAS_PALABRA=[
+ {k:/abraz/,v:[["Su izquierda esté debajo de mi cabeza, y su derecha me abrace.","Cantares 2:6"]],p:[
+`«{w}» es mi puerto, mi calma, mi hogar,
+el sitio en que el miedo no sabe llegar;
+refugio de paz cuando todo me pesa,
+y en cada latido tu amor me atraviesa.
+
+Si el mundo me cansa, me quedo en tu pecho,
+y todo se vuelve más lindo y derecho;
+contigo, mi vida, lo sé de verdad:
+no hay mejor lugar que tu cálida bondad.`]},
+ {k:/caf|chocolate|\bte\b|mate/,v:[["Este es el día que hizo Jehová; nos gozaremos y alegraremos en él.","Salmo 118:24"]],p:[
+`Una taza de «{w}» y tu voz en la mañana,
+y el día se pinta de luz más cercana;
+no pido más lujos ni más compañía:
+que tú seas mi aroma, mi paz y mi alegría.
+
+Que el tiempo se frene al oír tu relato,
+y el mundo se vuelva más lindo y más grato;
+contigo hasta lo simple se vuelve un tesoro,
+y tú, mi amor, eres mi más dulce oro.`]},
+ {k:/ris|sonri|carcaj/,v:[["El corazón alegre constituye buen remedio.","Proverbios 17:22"]],p:[
+`«{w}»: la música tuya que más me conmueve,
+un sol que se asoma cuando casi llueve;
+si el día amanece sin luz ni color,
+me basta tu risa para sentir amor.
+
+Que Dios te conserve esa alegría,
+que nunca se apague tu luz de cada día;
+y mientras yo viva, mi única misión
+será cuidar tu sonrisa y tu ilusión.`]},
+ {k:/hogar|casa|famil/,v:[["Con sabiduría se edificará la casa, y con prudencia se afirmará.","Proverbios 24:3"]],p:[
+`Mi «{w}» no tiene paredes ni techo,
+vive en tus brazos y en tu mirada;
+guardo tu nombre muy dentro del pecho,
+y a tu lado no me falta nada.
+
+Si un día me pierdo, tú eres mi guía,
+la luz que me lleva de vuelta a mi centro;
+contigo es más dulce y bendito cada día,
+y en ti, mi amor, yo siempre me encuentro.`]},
+ {k:/beso|besar/,v:[["¡Oh, si él me besara con besos de su boca! Porque mejores son tus amores que el vino.","Cantares 1:2"]],p:[
+`«{w}» y tu voz: me saben a promesa,
+dulce palabra que el alma confiesa;
+me roban el aliento, me inundan de paz,
+y son todo mi cielo en un solo compás.
+
+Que nunca se acabe tu ternura sincera,
+ni falte en mis días tu dulce manera;
+y cuando el mañana nos vuelva a encontrar,
+recordaré siempre tu forma de amar.`]},
+ {k:/luna|estrella|cielo|noche|\bsol\b|lucero/,v:[["Cuando veo tus cielos, obra de tus dedos, la luna y las estrellas que tú formaste.","Salmo 8:3"]],p:[]}
+];
+
+function darPalabra(){
+  const raw=$('inPalabra').value.trim();if(!raw)return;
+  const w=esc(limpia(raw)),n=norm(raw);
+  const cat=POEMAS_PALABRA.find(c=>c.k.test(n));
+  const pool=(cat?cat.p.concat(cat.p):[]).concat(GEN_PALABRA);
+  const txt=elegir(pool,'palabra').split('{w}').join(w);
+  const v=elegir(cat?cat.v.concat(VERSOS_AMOR):VERSOS_AMOR,'verso');
+  const r=$('respPalabra');
+  r.innerHTML='<div class="poema">'+poemaHTML(txt)+'<div class="versiculo">“'+v[0]+'” <b>— '+v[1]+'</b></div></div>';
+  r.classList.remove('nueva');void r.offsetWidth;r.classList.add('nueva');
+  const q=r.getBoundingClientRect();explosion(q.left+q.width/2,q.top+20,10);
+  $('inPalabra').value='';
+}
+ligar('inPalabra','btnPalabra',darPalabra);
+
+/* ---------- meses ---------- */
+const mesesData=[
+  {t:"El inicio de todo. Un día cualquiera que se volvió el mejor.",v:"Todo lo hizo hermoso en su tiempo.",c:"Eclesiastés 3:11"},
+  {t:"Aprendí tus gestos, tu risa y tus silencios favoritos.",v:"Mejores son dos que uno; porque tienen mejor paga de su trabajo.",c:"Eclesiastés 4:9"},
+  {t:"Ya no imaginaba mis días sin saber de ti.",v:"Y sobre todas estas cosas vestíos de amor, que es el vínculo perfecto.",c:"Colosenses 3:14"},
+  {t:"Cada mes contigo me confirma que acerté con el corazón.",v:"Fíate de Jehová de todo tu corazón.",c:"Proverbios 3:5"},
+  {t:"Cinco meses y quiero cincuenta años más a tu lado.",v:"Las muchas aguas no podrán apagar el amor, ni lo ahogarán los ríos.",c:"Cantares 8:7"}
+];
+const cont=$('meses');
+mesesData.forEach((m,i)=>{
+  const d=document.createElement('div');d.className='mes reveal';
+  d.innerHTML=`<div class="mes-in"><div class="cara frente"><b>${i+1}</b><span>${i?'meses':'mes'}</span><em>${i==4?'💛':'💗'}</em></div><div class="cara dorso"><span>${m.t}</span><small class="verso">“${m.v}” <b>— ${m.c}</b></small></div></div>`;
+  d.onclick=()=>{d.classList.toggle('volteada');const q=d.getBoundingClientRect();explosion(q.left+q.width/2,q.top+q.height/2,6)};
+  d.style.transitionDelay=(i*.12)+'s';cont.appendChild(d);io.observe(d);
+});
+
+/* ---------- razones ---------- */
+const razones=[
+  "Porque contigo hasta lo simple se siente especial.",
+  "Por tu sonrisa, que me arregla cualquier día.",
+  "Porque me haces querer ser mejor persona.",
+  "Por la paz que siento cuando estás cerca.",
+  "Porque tu risa es mi sonido favorito.",
+  "Por cómo me miras, como si fuera lo mejor que te pasó.",
+  "Porque eres valiente aunque no lo creas.",
+  "Por tu forma de cuidar a los que quieres.",
+  "Porque contigo todo es más ligero.",
+  "Por ser tú, sin filtros, sin máscaras.",
+  "Porque me enseñas a ver lo bonito de la vida.",
+  "Por los planes que ya imagino a tu lado.",
+  "Porque tus abrazos son mi hogar.",
+  "Por tu ternura, que no se parece a ninguna otra.",
+  "Porque eres mi persona favorita, y punto."
+];
+let ri=1,orden=razones.slice(1).sort(()=>Math.random()-.5);
+$('otraRazon').addEventListener('click',e=>{
+  if(!orden.length)orden=razones.slice().sort(()=>Math.random()-.5);
+  ri++;const r=$('respRazon');
+  r.innerHTML=`<div><div class="razon-num">Razón #${ri}</div>${orden.shift()}</div>`;
+  r.classList.remove('nueva');void r.offsetWidth;r.classList.add('nueva');
+  const q=e.target.getBoundingClientRect();explosion(q.left+q.width/2,q.top,8);
+});
+
+/* ---------- deseos: poema que sube y se desvanece ---------- */
+const GEN_DESEO=[
+`Si mi corazón pudiera pedir una estrella,
+le diría «{d}» con voz de ilusión;
+y el cielo, escuchando la plegaria bella,
+lo guardaría en su mejor canción.
+
+Que Dios, que conoce mi anhelo profundo,
+lo cumpla en su tiempo, con paz y con fe;
+porque a tu lado, mi amor, en este mundo,
+todo lo que sueño, alcanzarlo podré.`,
+`Pido, con ternura, un deseo sincero:
+«{d}», y que sea contigo, mi vida;
+que el tiempo nos dé lo que tanto espero
+y el cielo bendiga esta historia querida.
+
+Prometo cuidarte con amor verdadero,
+y juntos veremos la dicha cumplida;
+tú eres mi sueño, mi paz, mi lucero,
+y en ti, mi cielo, encuentro mi guarida.`,
+`Cuando miro al cielo y cierro los ojos,
+pienso en «{d}» y en ti, siempre en ti;
+pues tus abrazos calman mis enojos
+y todo en tu mirada es para mí.
+
+Que suba mi ruego, que llegue a lo alto,
+llevando «{d}» envuelto en oración;
+si el cielo lo quiere, no habrá sobresalto,
+solo un «sí» eterno en nuestro corazón.`,
+`Le conté a la luna mi mayor anhelo:
+«{d}», le dije, con fe y con consuelo.
+Ella sonrió, bañando de plata el cielo,
+y juré, a tu lado, cumplirlo sin recelo.
+
+Dios abre caminos donde no hay salida,
+y escucha las voces del alma sentida.
+Confío en su tiempo, confío en su guía,
+y sé que contigo será todo alegría.`,
+`Que el universo escuche este susurro mío:
+«{d}», mi gran deseo, mi gran ilusión;
+yo sé que el amor, como un manso río,
+nos lleva a cumplirlo, con su bendición.
+
+Y el día que llegue, lo viviré a tu lado,
+con lágrimas lindas de pura emoción;
+daré gracias al cielo por lo que me ha dado:
+tu amor, que me abraza el alma y el corazón.`
+];
+const POEMAS_DESEO=[
+ {k:/casad|casar|casam|boda|espos|matrimon|anillo|altar/,p:[
+`Un día, de blanco, te veré llegar,
+y mi corazón no podrá callar;
+y diré «{d}» entre lágrimas de alegría,
+y habrá en tu mirada mi más bella melodía.
+
+Prometo amarte en salud y en dolor,
+en risas y en penas, con todo mi amor;
+y el cielo, testigo de nuestra promesa,
+bendiga el hogar que será tu certeza.`]},
+ {k:/hij|famil|bebe|nino|nina/,p:[
+`Imagino una casa con risas de niños,
+«{d}», le pido a Dios con fe y con ternura;
+con besos, con juegos, con mil cariños,
+y un amor que crece con paz y dulzura.
+
+Que aprendan de ti la bondad y la calma,
+que aprendan de mí a soñar sin temor;
+que Dios los bendiga y les cuide el alma,
+y siempre los guíe la luz del amor.`]},
+ {k:/casa|hogar|vivir|depart|mudar|vivienda/,p:[
+`Quiero una casita con luz de ventana,
+y «{d}» escrito en la puerta de entrada;
+tu risa en las tardes, tu abrazo en la mañana,
+y el cielo sonriendo en nuestra morada.
+
+Que no falte nunca el pan ni la calma,
+ni un rezo de gracias al caer el día;
+que Dios habite en el hogar del alma
+y reine entre nosotros la alegría.`]},
+ {k:/viaj|mundo|playa|conocer|paris|europa|avion|isla/,p:[
+`Quiero que el camino nos lleve a lo lejos,
+«{d}», le pido al horizonte y al mar;
+y que cada ciudad, con sus mil reflejos,
+nos vea tomados de la mano pasar.
+
+No importa el destino si vas a mi lado,
+mi hogar es tu abrazo, vayamos donde sea;
+que el cielo nos guarde, pues Dios nos ha dado
+un amor que viaja contigo y no titubea.`]},
+ {k:/grad|titul|estudi|trabaj|exito|meta|profes|empres|negocio|carrera/,p:[
+`Que mis metas se cumplan, que tus sueños se alcancen,
+«{d}», pido con fuerza, con fe y con pasión;
+que el esfuerzo florezca y que nunca descansen
+las ganas de ir lejos con el corazón.
+
+Y cuando lo logre, será por tu aliento,
+por tu mano firme que nunca soltó;
+tú eres mi motor, mi fe, mi sustento,
+y a Dios le doy gracias, que a ti me llevó.`]},
+ {k:/junt|siempre|contigo|quedar|separ|eterno|estemos/,p:[
+`Quiero que la vida nos junte y no nos separe,
+«{d}», lo repito al viento y al mar;
+que el tiempo nos cuide y que Dios nos ampare,
+y nada nos pueda jamás desatar.
+
+Contigo he aprendido que el amor es paciente,
+que sabe esperar y que sabe abrazar;
+por eso mi sueño sigue tan vivo, tan presente:
+tenerte a mi lado, y no dejar de amar.`]}
+];
+function pedirDeseo(){
+  const raw=$('inDeseo').value.trim();if(!raw)return;
+  const d=esc(limpia(raw)),n=norm(raw);
+  const cat=POEMAS_DESEO.find(c=>c.k.test(n));
+  const pool=(cat?cat.p.concat(cat.p):[]).concat(GEN_DESEO);
+  const txt=elegir(pool,'deseo').split('{d}').join(d);
+  const cielo=$('cielo');cielo.innerHTML='';
+  const el=document.createElement('div');el.className='poema-vuelo';el.innerHTML=poemaHTML(txt);
+  cielo.appendChild(el);setTimeout(()=>el.remove(),18500);
+  const q=cielo.getBoundingClientRect();explosion(q.left+q.width/2,q.top+q.height-60,12);
+  $('inDeseo').value='';
+}
+ligar('inDeseo','btnDeseo',pedirDeseo);
+
+/* ---------- carta ---------- */
+let escrita=false;
+$('abrirCarta').addEventListener('click',e=>{
+  if(escrita)return;escrita=true;
+  e.target.classList.add('oculto');
+  const c=$('carta');c.classList.remove('oculto');c.classList.add('nueva');
+  const txt=CONFIG.carta;let i=0;
+  const firma=document.createElement('span');firma.className='firma';firma.textContent='— '+CONFIG.el;
+  const nodo=document.createTextNode('');c.appendChild(nodo);
+  (function paso(){
+    if(i<txt.length){nodo.nodeValue+=txt[i++];setTimeout(paso,i%40==0?140:24);}
+    else{c.appendChild(firma);firma.animate([{opacity:0},{opacity:1}],{duration:1200});
+      const q=c.getBoundingClientRect();explosion(q.left+q.width/2,q.top+q.height/2,18);}
+  })();
+});
+})();
+</script>
+</body>
+</html>
